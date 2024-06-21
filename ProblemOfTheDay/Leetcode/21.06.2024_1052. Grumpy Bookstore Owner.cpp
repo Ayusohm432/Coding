@@ -71,3 +71,36 @@ public:
         return totalSatisfied;
     }
 };
+
+
+// Another Solution
+class Solution {
+public:
+    int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int minutes) {
+        int n = customers.size();
+        int maxCustomers = 0;
+        int answer = 0;
+        for(int i=0 ; i<n ; i++){
+            if(grumpy[i] == 0){
+                answer += customers[i];
+            }
+        }
+        int i=0;
+        while(i<=n-minutes){
+            int j=i;
+            int total = 0;
+            int count=0;
+            while(count != minutes){
+                if(grumpy[j] == 1){
+                    total += customers[j];
+                }
+                j++;
+                count++;
+            }
+            total += answer;
+            maxCustomers = max(maxCustomers,total);
+            i++;
+        }
+        return max(maxCustomers,answer);
+    }
+};
