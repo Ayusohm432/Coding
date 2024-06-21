@@ -39,6 +39,38 @@ using namespace std;
 
 class Solution {
   public:
+  //Another Solution
+    // string compareFrac(string str) {
+
+    //     // Code here
+    //     int nr1=0,nr2=0,dr1=0,dr2=0;
+        
+    //     regex re("([0-9]+)\\/([0-9]+), ([0-9]+)\\/([0-9]+)",regex_constants :: ECMAScript);
+    //     smatch sm;
+    //     if(regex_search(str,sm,re)){
+    //         nr1 = stoi(sm[1]);
+    //         dr1 = stoi(sm[2]);
+            
+    //         nr2 = stoi(sm[3]);
+    //         dr2 = stoi(sm[4]);
+    //     }
+        
+    //     string ans="";
+    //     if(nr1*dr2 > nr2*dr1){
+    //         ans += to_string(nr1);
+    //         ans +="/";
+    //         ans += to_string(dr1);
+    //     }
+    //     else if(nr2*dr1 > nr1*dr2){
+    //         ans += to_string(nr2);
+    //         ans += "/";
+    //         ans += to_string(dr2);
+    //     }
+    //     else{
+    //         ans = "equal";
+    //     }
+    //     return ans;
+    // }
     string compareFrac(string str) {
 
         // Code here
