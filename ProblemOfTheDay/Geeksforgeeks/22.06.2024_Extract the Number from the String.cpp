@@ -59,7 +59,35 @@ class Solution {
 };
 //Approach 2 
 
+class Solution {
+  public:
+    long long ExtractNumber(string sentence) {
 
+        // code here
+        regex re("\\d+");
+        smatch match;
+        
+        string s = sentence;
+        vector<string> store;
+        
+        while(regex_search(s,match,re)){
+            store.push_back(match.str());
+            s=match.suffix().str();
+        }
+        long long ans = -1;
+        long long temp  = LLONG_MIN;
+        
+        for(const auto& num : store){
+            if(num.find('9') == string::npos){
+                long long numvalue = stoll(num);
+                temp = max(temp,numvalue);
+            }
+        }
+        
+        ans = max(ans,temp);
+        return ans;
+    }
+};
 
 
 //{ Driver Code Starts
