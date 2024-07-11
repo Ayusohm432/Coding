@@ -1,0 +1,98 @@
+/*
+Problem link :- https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/
+*/
+
+/*1190. Reverse Substrings Between Each Pair of Parentheses
+
+You are given a string s that consists of lower case English letters and brackets.
+
+Reverse the strings in each pair of matching parentheses, starting from the innermost one.
+
+Your result should not contain any brackets.
+
+ 
+
+Example 1:
+
+Input: s = "(abcd)"
+Output: "dcba"
+Example 2:
+
+Input: s = "(u(love)i)"
+Output: "iloveu"
+Explanation: The substring "love" is reversed first, then the whole string is reversed.
+Example 3:
+
+Input: s = "(ed(et(oc))el)"
+Output: "leetcode"
+Explanation: First, we reverse the substring "oc", then "etco", and finally, the whole string.
+ 
+
+Constraints:
+
+1 <= s.length <= 2000
+s only contains lower case English characters and parentheses.
+It is guaranteed that all parentheses are balanced.
+
+
+*/
+
+//Approach-1            T.C = O(n^2)        S.C = O(n);
+class Solution {
+public:
+    string reverseParentheses(string s) {
+        stack<int> lastSkip;
+
+        string result;
+
+        for(char& ch : s){
+            if(ch == '('){
+                lastSkip.push(result.length());
+            }
+            else if(ch == ')'){
+                int l = lastSkip.top();
+                lastSkip.pop();
+                reverse(result.begin()+l,result.end());
+            }
+            else{
+                result.push_back(ch);
+            }
+        }
+        return result;
+    }
+};
+
+//Approach-2            T.C = O(n^2)        S.C = O(n);
+class Solution {
+public:
+    string reverseParentheses(string s) {
+        int n = s.length();
+        stack<int> openBracketsIdx;
+        vector<int> door(n);
+
+        for(int i=0 ; i<n ; i++){
+            if(s[i] == '('){
+                openBracketsIdx.push(i);
+            }
+            else if(s[i] == ')'){
+                int j = openBracketsIdx.top();
+                openBracketsIdx.pop();
+                door[i] = j;
+                door[j] = i;
+            }
+        }
+
+        string result;
+        int flag = 1;
+        for(int i=0 ; i<n ; i+=flag){
+            if(s[i] == '(' || s[i] == ')'){
+                i = door[i];
+                flag = -flag;
+            }
+            else{
+                result.push_back(s[i]);
+            }
+        }
+        return result;
+    }
+};
