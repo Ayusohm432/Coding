@@ -33,6 +33,7 @@ using namespace std;
 
 // } Driver Code Ends
 // User function Template for C++
+//Approach-1
 class Solution {
   public:
     string smallestNumber(int s, int d) {
@@ -83,3 +84,33 @@ int main() {
     return 0;
 }
 // } Driver Code Ends
+
+
+//Approach-2
+class Solution {
+  public:
+
+    string printString(string s, char ch, int count) {
+        // Your code goes here
+        
+        int n = s.length();
+        
+        
+        int i;
+        for(i=0 ; i<n ; i++){
+            if(ch == s[i]){
+                count--;
+            }
+            if(!count){
+                break;
+            }
+        }
+        if(i >= n-1 ){
+            return "";
+        }
+        s = s.substr(i+1);
+        
+        return s;
+        
+    }
+};
