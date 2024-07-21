@@ -54,8 +54,10 @@ lefti != righ
 */
 #include<iostream>
 #include<vector>
-#include<map>
+#include<unordered_map>
 #include<stack>
+
+
 using namespace std;
 
 class Solution {
@@ -131,6 +133,17 @@ public:
 };
 
 int main(){
+    Solution s;
+    vector<vector<int>> rowConditions = {{1,4},{2,3},{3,1}}, colConditions = {{1,3},{2,3}};
+    vector<vector<int>> matrix = s.buildMatrix(4 , rowConditions , colConditions);
+    for(int i=0 ; i<matrix.size() ; i++){
+        for(int j=0 ; j<matrix[i].size() ; j++){
+            cout<<matrix[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    return 0;
+
     
 }
 
