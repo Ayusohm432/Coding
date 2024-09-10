@@ -65,6 +65,7 @@ class Solution {
         return a;
     }
 public:
+//approch-1
     ListNode* insertGreatestCommonDivisors(ListNode* head) {
         if(!head){
             return head;
@@ -85,6 +86,27 @@ public:
             first = second;
             second = second->next;
         }
+        return head;
+    }
+};
+
+//approach-2
+
+class Solution {
+public:
+    ListNode* insertGreatestCommonDivisors(ListNode* head) {
+        if(head == nullptr || head->next == nullptr){
+            return head;
+        }
+
+        ListNode* temp = insertGreatestCommonDivisors(head->next);
+
+        int hcf = __gcd(head->val , head->next->val);
+        ListNode* gcdNode = new ListNode(hcf);
+
+        gcdNode->next = temp;
+        head->next = gcdNode;
+
         return head;
     }
 };
