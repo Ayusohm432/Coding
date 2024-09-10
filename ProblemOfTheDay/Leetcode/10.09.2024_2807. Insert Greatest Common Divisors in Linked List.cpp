@@ -50,20 +50,41 @@ struct ListNode {
 };
 
 class Solution {
+    int gcd(int a , int b){
+        while(a>0 && b>0){
+            if(a > b){
+                a = a % b;
+            }
+            else{
+                b = b % a;
+            }
+        }
+        if(a == 0){
+            return b;
+        }
+        return a;
+    }
 public:
     ListNode* insertGreatestCommonDivisors(ListNode* head) {
-        if(head == nullptr || head->next == nullptr){
+        if(!head){
             return head;
         }
 
-        ListNode* temp = insertGreatestCommonDivisors(head->next);
+        if(head->next == nullptr){
+            return head;
+        }
 
-        int hcf = __gcd(head->val , head->next->val);
-        ListNode* gcdNode = new ListNode(hcf);
+        ListNode* first = head;
+        ListNode* second = head->next;
 
-        gcdNode->next = temp;
-        head->next = gcdNode;
-
+        while(second){
+            int hcf = gcd(first->val , second->val);
+            ListNode* temp = new ListNode(hcf);
+            temp->next = second;
+            first->next = temp;
+            first = second;
+            second = second->next;
+        }
         return head;
     }
 };
