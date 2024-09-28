@@ -47,6 +47,9 @@ Constraints:
 At most 2000 calls will be made to insertFront, insertLast, deleteFront, deleteLast, getFront, getRear, isEmpty, isFull.
 
 */
+
+//Approach-1
+
 class MyCircularDeque {
     vector<int> deque;
     int k; 
@@ -120,5 +123,70 @@ public:
     
     bool isFull() {
         return currentCount == k;
+    }
+};
+
+//Approach-2
+//Approach-2
+class MyCircularDeque {
+    list<int> deque;
+    int k;
+public:
+    MyCircularDeque(int k) {
+        this->k = k;
+    }
+    
+    bool insertFront(int value) {
+        if(isFull()){
+            return false;
+        }
+        deque.push_front(value);
+        return true;
+    }
+    
+    bool insertLast(int value) {
+        if(isFull()){
+            return false;
+        }
+        deque.push_back(value);
+        return true;
+    }
+    
+    bool deleteFront() {
+        if(isEmpty()){
+            return false;
+        }
+        deque.pop_front();
+        return true;
+    }
+    
+    bool deleteLast() {
+        if(isEmpty()){
+            return false;
+        }
+        deque.pop_back();
+        return true;      
+    }
+    
+    int getFront() {
+        if(isEmpty()){
+            return -1;
+        }
+        return deque.front();
+    }
+    
+    int getRear() {
+        if(isEmpty()){
+            return -1;
+        }
+        return deque.back();
+    }
+    
+    bool isEmpty() {
+        return deque.size() == 0;
+    }
+    
+    bool isFull() {
+        return deque.size() == k;
     }
 };
