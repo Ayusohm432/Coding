@@ -24,6 +24,8 @@ Constraints:
 
 */
 
+//Approach-1
+
 class Solution {
   public:
     int totalCount(int k, vector<int>& arr) {
@@ -34,6 +36,32 @@ class Solution {
             if(arr[i] % k){
                 count++;
             }
+        }
+        return count;
+    }
+};
+
+//Approach-2
+class Solution {
+  public:
+    int totalCount(int k, vector<int>& arr) {
+        // code here
+        int count = 0;
+        for(auto x : arr){
+            count += x%k ? x/k+1 : x/k;
+        }
+        return count;
+    }
+};
+
+//Approach-3
+class Solution {
+  public:
+    int totalCount(int k, vector<int>& arr) {
+        // code here
+        int count = 0;
+        for(auto x : arr){
+            count += (x + k -1) / k;
         }
         return count;
     }
