@@ -26,7 +26,7 @@ Constraints:
 1 <= arr[i] <= 106
 
 */
-lass Solution {
+class Solution {
   public:
     int rotateDelete(vector<int> &arr) {
         // Your code here
