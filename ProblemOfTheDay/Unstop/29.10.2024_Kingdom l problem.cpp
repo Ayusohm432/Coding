@@ -5,8 +5,7 @@
 using namespace std;
 
 class Solution {
-    vector<pair<int,int>> directions = {{-1,0}, {1,0}, {0,-1}, {0,1}, 
-                                       {-1,-1}, {-1,1}, {1,-1}, {1,1}};
+    vector<pair<int,int>> directions = {{-1,0}, {1,0}, {0,-1}, {0,1}, {-1,-1}, {-1,1}, {1,-1}, {1,1}};
     
     bool isValid(int i, int j, int n, int m) {
         return i >= 0 && i < n && j >= 0 && j < m;
