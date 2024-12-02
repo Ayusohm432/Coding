@@ -38,6 +38,7 @@ searchWord consists of lowercase English letters.
 
 */
 
+//Approach-1
 class Solution {
 public:
     bool match(string s, string searchWord){
@@ -67,6 +68,93 @@ public:
                 curr = "";
             }
         }
+        return -1;
+    }
+};
+
+//Approach-2
+class Solution {
+public:
+    int isPrefixOfWord(string sentence, string searchWord) {
+        stringstream ss(sentence);
+        string word;
+        int index = 1;
+
+        while(ss >> word){
+            if(word.find(searchWord) == 0){
+                return index;
+            }
+            index++;
+        } 
+
+        return -1;
+    }
+};
+
+//Appraoch-3
+class Solution {
+public:
+    int isPrefixOfWord(string sentence, string searchWord) {
+        stringstream ss(sentence);
+        string word;
+        int index = 1;
+
+        while(ss >> word){
+            if(word.substr(0, searchWord.size()) == searchWord){
+                return index;
+            }
+            index++;
+        }
+
+        return -1;
+    }
+};
+
+//Approach-4
+
+class Solution {
+public:
+    int isPrefixOfWord(string sentence, string searchWord) {
+        string pattern = "\\b" + searchWord;
+        regex re(pattern);
+        stringstream ss(sentence);
+        string word;
+        int index = 1;
+
+        while(ss >> word){
+            if(regex_search(word, re)){
+                return index;
+            }
+            index++;
+        }
+        return -1;
+    }
+};
+
+//Appraoch-5
+class Solution {
+public:
+    int isPrefixOfWord(string sentence, string searchWord) {
+        int index = 1;
+        string curr = "";
+
+        for(char ch : sentence){
+            if(ch == ' '){
+                if(curr.substr(0, searchWord.size()) == searchWord){
+                    return index;
+                }
+                curr = "";
+                index++;
+            }
+            else{
+                curr += ch;
+            }
+        }
+
+        if(curr.substr(0, searchWord.size()) == searchWord){
+            return index;
+        }
+
         return -1;
     }
 };
