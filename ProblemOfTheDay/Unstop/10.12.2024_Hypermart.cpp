@@ -53,47 +53,40 @@ The third query is of the second type, so out of Chips and Coke, the quantity of
 
 */
 
-#include <iostream>
-#include <queue>
-#include <string>
-#include <vector>
+#include "bits/stdc++.h"
+#include <algorithm>
 using namespace std;
 
-
-struct Product {
-    int quantity;
-    int order;
-    string name;
-    bool operator<(const Product& other) const {
-        if (quantity == other.quantity)
-            return order > other.order;
-        return quantity > other.quantity; 
+struct Compare {
+    bool operator()(pair<int, string>& a, pair<int, string>& b) {
+        return a.first > b.first;  
     }
 };
 
+
 int main() {
-    int Q;
-    cin >> Q;
+   int t;
+   cin>>t;
+   typedef pair<int, string> P;
 
-    priority_queue<Product> minHeap; 
-    int order = 0;
-    for (int i = 0; i < Q; ++i) {
-        int type;
-        cin >> type;
-
-        if (type == 1) {
-            string productName;
-            int quantity;
-            cin >> productName >> quantity;
-            minHeap.push({quantity, order++, productName});
-        } else if (type == 2) {
-           
-            Product topProduct = minHeap.top();
-            minHeap.pop();
-
-            cout << topProduct.name << endl;
+   priority_queue<P, vector<P>,Compare> pq;
+   while(t--)
+   {
+        int q;
+        cin>>q;
+        if(q==2)
+        {
+            P topEle=pq.top();
+            pq.pop();
+            cout<<topEle.second<<"\n";
         }
-    }
-
+        else
+        {
+            string prod;
+            int qty;
+            cin>>prod>>qty;
+            pq.push({qty,prod});
+        }
+   }  
     return 0;
 }
