@@ -55,7 +55,6 @@ class Solution {
         return ans;
     }
     int countFreq(vector<int>& arr, int target) {
-        //CodeGenius
         if(lastOcc(arr,target)==-1 && firstOcc(arr,target)==-1) return 0;
         return lastOcc(arr,target)-firstOcc(arr,target) +1;
         
