@@ -47,6 +47,8 @@ So, there are 6 ways to distribute toy cars.
 
 */
 
+//Appraoch-1
+
 #include <cmath>
 #include <cstdio>
 #include <vector>
@@ -70,6 +72,45 @@ int main() {
     }
 
     cout << count << endl;
+
+    return 0;
+}
+
+//Approach-2
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int countWays(int k, int s, int child, vector<vector<int>>& memo) {
+    if (s == 0) {
+        return 1;
+    }
+    if (child >= 3 || s < 0) {
+        return 0;
+    }
+    
+    if (memo[child][s] != -1) {
+        return memo[child][s];
+    }
+
+    int ways = 0;
+    for (int i = 0; i <= k; i++) {
+        ways += countWays(k, s - i, child + 1, memo);
+    }
+
+    memo[child][s] = ways;
+    return ways;
+}
+
+int main() {
+    int k, s;
+    cin >> k;
+    cin >> s;
+
+    vector<vector<int>> memo(3, vector<int>(s + 1, -1));
+    int result = countWays(k, s, 0, memo);
+    cout << result << endl;
 
     return 0;
 }
