@@ -49,12 +49,24 @@ struct ListNode {
 };
 
 int longest_arithmetic_progression(ListNode* head) {
-    // Write your logic here.
-    // Parameters:
-    //     head (ListNode*): Head node of the linked list
-    // Returns:
-    //     int: Longest length of arithmetic progression with consecutive elements
-    return 0;
+    if (head == NULL || head->next == NULL) {
+        return 1;
+    }
+
+    int max_length = 1;
+    ListNode* current = head;
+    while (current != NULL && current->next != NULL) {
+        int diff = current->next->val - current->val;
+        int length = 2;
+        ListNode* next_node = current->next;
+        while (next_node->next != NULL && next_node->next->val - next_node->val == diff) {
+            length++;
+            next_node = next_node->next;
+        }
+        max_length = std::max(max_length, length);
+        current = next_node;
+    }
+    return max_length;
 }
 
 int main() {
@@ -89,3 +101,4 @@ int main() {
     }
     return 0;
 }
+
