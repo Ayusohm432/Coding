@@ -41,13 +41,31 @@ class Solution {
   public:
     // Function to find the height of a binary tree.
     int height(Node* node) {
-        if (node == NULL) {
-            return 0;
-        } else {
-            int left_height = height(node->left);
-            int right_height = height(node->right);
-            return max(left_height, right_height) + 1;
+        // code here
+        if(node==NULL)
+        return 0;
+        int ans=0;
+        queue<Node*> qt;
+        qt.push(node);
+        while(!qt.empty())
+        {
+            
+            int size=qt.size();
+            while(size--){
+            Node *curr=qt.front();
+            qt.pop();
+             if(curr->left)
+             {
+                 qt.push(curr->left);
+             }
+             if(curr->right)
+             {
+                 qt.push(curr->right);
+             }
+            }
+            ans++;
         }
+        return ans-1;
     }
 };
 
