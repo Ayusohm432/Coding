@@ -50,6 +50,11 @@ using namespace std;
 std::vector<std::pair<int, int>> x_power_y_pairs(int n) {
     // Write your logic here.
     // Return a vector of pairs [X, Y] where X^Y equals n
+
+    if(n == 1){
+        return {{1, 1}};
+    }
+    
     vector<pair<int, int>> result;
 
     for(int y=1; y<=log2(n); y++){
