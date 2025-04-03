@@ -67,7 +67,7 @@ Compare 13 with 12. The higher value is 13.
 #include <iostream>
 #include <unordered_map>
 using namespace std;
-
+unordered_map<int, int> dp;
 // Placeholder function where the user will write the logic
 int Maximum(int N) {
     // Write your logic here.
@@ -76,8 +76,6 @@ int Maximum(int N) {
     // Returns:
     //   int: Maximum possible enhancement level achievable
     // Placeholder return
-
-    unordered_map<int, int> dp;
     if(N == 0){
         return 0;
     }
