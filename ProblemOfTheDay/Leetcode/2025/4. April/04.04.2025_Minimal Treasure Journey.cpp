@@ -91,7 +91,6 @@ int main() {
     return 0;
 } */
 
-```C++
 #include <iostream>
 #include <vector>
 #include <climits>
@@ -165,5 +164,3 @@ int main()
     cout << result << endl;
     return 0;
 }
-
-```
