@@ -91,6 +91,7 @@ int main() {
     return 0;
 } */
 
+```C++
 #include <iostream>
 #include <vector>
 #include <climits>
@@ -100,7 +101,7 @@ using namespace std;
 int min_treasure(vector<vector<int>> &grid)
 {
     int n = grid.size();
-    
+
     vector<vector<int>> dp(n, vector<int>(n, INT_MAX));
 
     for (int j = 0; j < n; ++j)
@@ -164,3 +165,5 @@ int main()
     cout << result << endl;
     return 0;
 }
+
+```
