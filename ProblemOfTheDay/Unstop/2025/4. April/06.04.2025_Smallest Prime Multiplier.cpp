@@ -56,3 +56,25 @@ int main() {
     
     return 0;
 }
+
+//Approach - 2
+
+#include <iostream>
+#include <algorithm> 
+
+long long compute_x(long long p, long long n) {
+
+    long long gcd = std::__gcd(p, n);
+    
+    return (p / gcd) * n; 
+}
+
+int main() {
+    long long p, n;
+    std::cin >> p >> n;
+    
+    long long result = compute_x(p, n);
+    std::cout << result << std::endl;
+    
+    return 0;
+}
