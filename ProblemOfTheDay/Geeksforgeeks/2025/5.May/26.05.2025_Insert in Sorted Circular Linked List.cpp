@@ -23,7 +23,7 @@ Constraints:
 
 */
 
-/* structure for a node
+/* structure for a node */
 class Node {
  public:
   int data;
@@ -31,9 +31,9 @@ class Node {
 
   Node(int x){
       data = x;
-      next = NULL;
+      next = nullptr;
   }
-}; */
+}; 
 
 class Solution {
   public:
