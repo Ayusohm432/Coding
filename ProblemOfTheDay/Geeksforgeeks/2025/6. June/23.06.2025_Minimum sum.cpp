@@ -1,5 +1,5 @@
 /*
-Problem Link: https://www.geeksforgeeks.org/problems/minimum-sum4058/1?timeMachineDate=2025-06-23
+Problem Link: https://www.geeksforgeeks.org/problems/minimum-sum4058/1
 */
 
 /*Minimum sum
