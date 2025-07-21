@@ -128,7 +128,7 @@ public:
         vector<vector<string>> result;
         vector<string> pathBuffer;
 
-        for(auto& [folder, child] : root->children){
+        for(auto& [folder, child] : root->children){    
             collectPaths(child, pathBuffer, result);
         }
 
